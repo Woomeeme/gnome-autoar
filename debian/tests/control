@@ -1,0 +1,7 @@
+Tests: libgnome-autoar-0-dev
+Depends: build-essential, libgnome-autoar-0-dev
+Restrictions: allow-stderr superficial
+
+Tests: libgnome-autoar-gtk-0-dev
+Depends: build-essential, dbus, libgnome-autoar-gtk-0-dev, xauth, xvfb
+Restrictions: allow-stderr superficial

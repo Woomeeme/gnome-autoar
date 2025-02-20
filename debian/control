@@ -1,15 +1,103 @@
-Source: template-repository
-Section: unknown
+Source: gnome-autoar
+Section: libs
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Uploaders: Jeremy Bícha <jbicha@ubuntu.com>, Michael Biebl <biebl@debian.org>
+Build-Depends: debhelper-compat (= 13),
+               dh-sequence-gir,
+               gtk-doc-tools,
+               libarchive-dev (>= 3.4.0),
+               libgirepository1.0-dev (>= 1.30.0),
+               libglib2.0-dev (>= 2.35.6),
+               libgtk-3-dev (>= 3.2),
+               meson (>= 0.56.0),
+               pkgconf,
+               valac
+Rules-Requires-Root: no
+Standards-Version: 4.7.0
+Vcs-Browser: https://salsa.debian.org/gnome-team/gnome-autoar
+Vcs-Git: https://salsa.debian.org/gnome-team/gnome-autoar.git
 
-Package: template-repository
+Package: libgnome-autoar-0-0
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Archives integration support for GNOME
+ GNOME Autoar is a library which makes creating and extracting archives easy,
+ safe, and automatic.
+
+Package: libgnome-autoar-gtk-0-0
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: GTK+ widgets for the GNOME Autoar library
+ GNOME Autoar is a library which makes creating and extracting archives easy,
+ safe, and automatic.
+ .
+ This library contains GTK+ widgets which can be embedded into applications.
+
+Package: libgnome-autoar-0-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: gir1.2-gnomeautoar-0.1 (= ${binary:Version}),
+         libarchive-dev,
+         libglib2.0-dev,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: ${gir:Provides}
+Suggests: libgnome-autoar-doc
+Description: Archives integration support for GNOME - development files
+ GNOME Autoar is a library which makes creating and extracting archives easy,
+ safe, and automatic.
+ .
+ This package contains the development files.
+
+Package: libgnome-autoar-gtk-0-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: gir1.2-gnomeautoargtk-0.1 (= ${binary:Version}),
+         libgnome-autoar-0-dev (= ${binary:Version}),
+         libgtk-3-dev,
+         ${gir:Depends},
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: ${gir:Provides}
+Suggests: libgnome-autoar-doc
+Description: GTK+ widgets for the GNOME Autoar library - development files
+ GNOME Autoar is a library which makes creating and extracting archives easy,
+ safe, and automatic.
+ .
+ This package contains the development files.
+
+Package: gir1.2-gnomeautoar-0.1
+Section: introspection
+Architecture: any
+Multi-Arch: same
+Depends: ${gir:Depends}, ${misc:Depends}
+Description: GObject introspection data for GnomeAutoar
+ This package contains GObject introspection information.
+ .
+ It can be used by packages using the GIRepository format to generate
+ dynamic bindings.
+
+Package: gir1.2-gnomeautoargtk-0.1
+Section: introspection
+Architecture: any
+Multi-Arch: same
+Depends: ${gir:Depends}, ${misc:Depends}
+Description: GObject introspection data for GnomeAutoarGtk
+ This package contains GObject introspection information.
+ .
+ It can be used by packages using the GIRepository format to generate
+ dynamic bindings.
+
+Package: libgnome-autoar-doc
+Section: doc
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Suggests: devhelp
+Description: Archives integration support for GNOME - documentation
+ This package contains documentation for the GNOME Autoar library.

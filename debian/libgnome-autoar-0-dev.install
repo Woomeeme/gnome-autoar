@@ -1,0 +1,11 @@
+usr/include/gnome-autoar-0/gnome-autoar/autoar-compressor.h
+usr/include/gnome-autoar-0/gnome-autoar/autoar-enum-types.h
+usr/include/gnome-autoar-0/gnome-autoar/autoar-extractor.h
+usr/include/gnome-autoar-0/gnome-autoar/autoar-format-filter.h
+usr/include/gnome-autoar-0/gnome-autoar/autoar-mime-types.h
+usr/include/gnome-autoar-0/gnome-autoar/autoar-misc.h
+usr/include/gnome-autoar-0/gnome-autoar/gnome-autoar.h
+usr/lib/*/libgnome-autoar-0.so
+usr/lib/*/pkgconfig/gnome-autoar-0.pc
+usr/share/gir-1.0/GnomeAutoar-0.1.gir
+usr/share/vala

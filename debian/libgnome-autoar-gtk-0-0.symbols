@@ -1,0 +1,6 @@
+libgnome-autoar-gtk-0.so.0 libgnome-autoar-gtk-0-0 #MINVER#
+* Build-Depends-Package: libgnome-autoar-gtk-0-dev
+ autoar_gtk_chooser_advanced_get@Base 0.1.1
+ autoar_gtk_chooser_advanced_new@Base 0.1.1
+ autoar_gtk_chooser_simple_get@Base 0.1.1
+ autoar_gtk_chooser_simple_new@Base 0.1.1

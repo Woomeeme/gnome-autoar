@@ -1,0 +1,36 @@
+#!/bin/sh
+# autopkgtest check: Build and run a program against gnome-autoar, to
+# verify that the headers and pkg-config file are installed correctly
+# (C) 2012 Canonical Ltd.
+# (C) 2018-2019 Simon McVittie
+# Authors: Martin Pitt, Simon McVittie
+
+set -eux
+
+WORKDIR=$(mktemp -d)
+export XDG_RUNTIME_DIR="$WORKDIR"
+trap 'rm -rf "$WORKDIR"' 0 INT QUIT ABRT PIPE TERM
+cd "$WORKDIR"
+cat <<'EOF' > trivial.c
+#include <gnome-autoar/autoar-gtk.h>
+
+int main(int argc, char **argv)
+{
+    GtkWidget *widget;
+
+    gtk_init(&argc, &argv);
+    widget = autoar_gtk_chooser_simple_new(AUTOAR_FORMAT_ZIP, AUTOAR_FILTER_NONE);
+    g_assert_nonnull(widget);
+    g_object_ref_sink(widget);
+    g_object_unref(widget);
+    return 0;
+}
+EOF
+
+# Deliberately word-splitting pkg-config's output:
+# shellcheck disable=SC2046
+gcc -o trivial trivial.c $(pkg-config --cflags --libs gnome-autoar-gtk-0)
+echo "build: OK"
+[ -x trivial ]
+xvfb-run -a dbus-run-session -- ./trivial
+echo "run: OK"
